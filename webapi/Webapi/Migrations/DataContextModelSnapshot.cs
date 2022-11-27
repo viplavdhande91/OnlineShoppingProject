@@ -24,11 +24,9 @@ namespace Webapi.Migrations
 
             modelBuilder.Entity("Webapi.Models.Domains.Cart", b =>
                 {
-                    b.Property<int>("CartId")
+                    b.Property<Guid>("CartId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DateAdded")
                         .HasColumnType("nvarchar(max)");
@@ -64,11 +62,9 @@ namespace Webapi.Migrations
 
             modelBuilder.Entity("Webapi.Models.Domains.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<Guid>("OrderId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -134,11 +130,9 @@ namespace Webapi.Migrations
 
             modelBuilder.Entity("Webapi.Models.Domains.Product", b =>
                 {
-                    b.Property<long>("ProductId")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ProductId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool?>("Availability")
                         .HasColumnType("bit");
@@ -167,6 +161,32 @@ namespace Webapi.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Webapi.Models.Domains.User", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

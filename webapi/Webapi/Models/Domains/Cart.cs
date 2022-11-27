@@ -6,7 +6,7 @@ namespace Webapi.Models.Domains
 {
     public class Cart
     {
-        public int CartId { get; set; }
+        public Guid CartId { get; set; }
 
         public string? UserName { get; set; }
         public double TotalPrice { get; set; }

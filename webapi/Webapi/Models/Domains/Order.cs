@@ -9,7 +9,7 @@ namespace Webapi.Models.Domains
 {
     public class Order
     {
-        public int OrderId { get; set; }
+        public Guid OrderId { get; set; }
 
         public string? Address { get; set; }
 
