@@ -22,14 +22,7 @@ namespace Webapi.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<OkResult> Post(User user)
-        {
-            _context.Add(user);
-            await _context.SaveChangesAsync();
-            return Ok();
-        }
-
+       
 
     }
 }

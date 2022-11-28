@@ -1,44 +1,65 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.IdentityModel.Tokens;
-//using Webapi.Repository;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Data;
+using Webapi.Data;
+using Webapi.Models.Domains;
+using Webapi.Repository;
 
-//namespace Webapi.Controllers
-//{
+namespace Webapi.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class AuthController : Controller
+    {
+       
 
-//    [ApiController]
-//    [Route("[controller]")]
-//    public class AuthController : Controller
-//    {
-//        public IActionResult Index()
-//        {
-//            return View();
-//        }
+        private readonly ITokenHandling _tokenHandling;
 
-//        private readonly IUserRepository userRepository;
-//        private readonly ITokenHandler tokenHandler;
+        private readonly DataContext _db;
 
-//        public AuthController(IUserRepository userRepository, ITokenHandler tokenHandler)
-//        {
-//            this.userRepository = userRepository;
-//            this.tokenHandler = tokenHandler;
-//        }
+        private readonly IUserHandling _userHandling;
 
-//        [HttpPost]
-//        [Route("login")]
-//        public async Task<IActionResult> LoginAsync(Models.DTO.LoginRequest loginRequest)
-//        {
-//            // Check if user is authenticated
-//            // Check username and password
-//            var user = await userRepository.AuthenticateAsync(loginRequest.Email, loginRequest.Password);
+        public AuthController(ITokenHandling tokenHandling, DataContext db,IUserHandling userHandling)
+        {
+            _tokenHandling = tokenHandling;
+            _db = db;
+            _userHandling = userHandling;
+        }
 
-//            if (user != null)
-//            {
-//                // Generate a JWT Token
-//                var token = await tokenHandler.CreateTokenAsync(user);
-//                return Ok(token);
-//            }
+        [HttpPost]
+        [Route("signup")]
 
-//            return BadRequest("Username or Password is incorrect.");
-//        }
-//    }
-//}
+
+
+        public async Task<int> SignUpDetails(User user)
+        {
+            
+            _db.Add(user);
+            int response = await _db.SaveChangesAsync();
+            return response;
+        }
+
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> LoginAsync(User? userRecieved)
+        {
+            // Check if user is authenticated
+            // Check username and password
+            
+            var user = await _userHandling.AuthenticateAsync(userRecieved.EmailAddress, userRecieved.Password);
+          
+            if (user != null )
+            {
+                // Generate a JWT Token
+                var token = await _tokenHandling.GenerateTokenAsync(user.EmailAddress);
+                return Ok(token);
+            }
+
+            return BadRequest("Username or Password is incorrect.");
+        }
+
+    }
+}
