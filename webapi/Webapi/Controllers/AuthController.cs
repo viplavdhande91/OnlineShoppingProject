@@ -30,9 +30,6 @@ namespace Webapi.Controllers
 
         [HttpPost]
         [Route("signup")]
-
-
-
         public async Task<int> SignUpDetails(User user)
         {
             

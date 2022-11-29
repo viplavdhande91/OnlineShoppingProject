@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using Webapi.Data;
 using Webapi.Models.Domains;
+using System.Text.Json;
 
 namespace Webapi.Controllers
 {
@@ -15,14 +18,28 @@ namespace Webapi.Controllers
         {
             _context = context;
         }
-        [HttpGet]
-        public IActionResult Index()
+
+
+
+        [HttpGet] // Set the attribute to Read
+        [Authorize]
+        public String Read()
         {
-            return View();
+
+
+            // Return the list of data from the database
+            //var data = _context.Users.ToList();
+            //string jsonString = JsonSerializer.Serialize(data);
+
+            return "AccessGranted";
+
         }
 
 
-       
+
+
+
+
 
     }
 }
