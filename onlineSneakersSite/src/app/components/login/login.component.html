@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div>
+    <div class="text-center my-5">
+      <img
+        src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg"
+        alt="logo"
+        width="100"
+      />
+    </div>
+    <div class="rounded d-flex justify-content-center">
+      <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+        <div class="text-center">
+          <h3 class="text-primary">Login</h3>
+        </div>
+        <div class="p-4">
+          <form #loginform="ngForm" (ngSubmit)="loginForm(loginform.value)">
+            <div class="input-group mb-3">
+              <span class="input-group-text bg-primary"
+                ><i class="bi bi-envelope text-white"></i
+              ></span>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                placeholder="Email *"
+                ngModel
+                required
+                #email="ngModel"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text bg-primary"
+                ><i class="bi bi-key-fill text-white"></i
+              ></span>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password *"
+                name="password"
+                #name="ngModel"
+                required
+                ngModel
+              />
+            </div>
+
+            <div class="d-grid col-12 mx-auto">
+              <button
+                class="btn btn-primary"
+                [disabled]="loginform.invalid"
+                type="submit"
+              >
+                <span></span> Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

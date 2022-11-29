@@ -1,0 +1,99 @@
+<div class="container-fluid">
+  <div>
+    <div class="rounded d-flex justify-content-center">
+      <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+        <div class="text-center">
+          <h3 class="text-primary">Create Account</h3>
+        </div>
+        <div class="p-4">
+          <form #signupform="ngForm" (ngSubmit)="signupForm(signupform.value)">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                name="firstname"
+                placeholder="First Name*"
+                #firstname="ngModel"
+                ngModel
+                required
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                name="lastname"
+                placeholder="Last Name*"
+                ngModel
+                required
+                #lastname="ngModel"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                placeholder="Email *"
+                ngModel
+                required
+                #email="ngModel"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <select
+                class="form-select"
+                ngModel
+                name="selectusertype"
+                required
+              >
+                <option disabled selected value>User Type:</option>
+                <option value="Seller">Seller</option>
+                <option value="Buyer">Buyer</option>
+              </select>
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                name="password"
+                type="password"
+                class="form-control"
+                placeholder="Password *"
+                required
+                ngModel
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                name="confirmpassword"
+                class="form-control"
+                #name="ngModel"
+                placeholder="Confirm Password *"
+                required
+                ngModel
+              />
+            </div>
+
+            <div class="d-grid col-12 mx-auto">
+              <button
+                [disabled]="signupform.invalid"
+                class="btn btn-success"
+                type="submit"
+              >
+                <span></span> Sign up
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
