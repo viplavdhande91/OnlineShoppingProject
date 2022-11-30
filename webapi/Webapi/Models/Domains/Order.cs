@@ -11,6 +11,8 @@ namespace Webapi.Models.Domains
     {
         public Guid OrderId { get; set; }
 
+        public Guid UserId { get; set; }
+
         public string? Address { get; set; }
 
         public string? LandMark { get; set; }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExternalApiCallService } from '../../services/ApiCall/external-api-call.service';
-import { InputValidationService } from 'src/app/services/input-validation.service';
 import { ToastrService } from 'src/app/services/toastr/toastr.service';
 
 import * as uuid from 'uuid';

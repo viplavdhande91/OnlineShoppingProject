@@ -15,6 +15,8 @@ import { CartpageComponent } from './components/cart/cartpage/cartpage.component
 import { OrdercatergorypageComponent } from './components/order/ordercatergorypage/ordercatergorypage.component';
 import { OrderspecificpageComponent } from './components/order/orderspecificpage/orderspecificpage.component';
 import { LogoutComponent } from './components/logout/logout/logout.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { LogoutComponent } from './components/logout/logout/logout.component';
     OrdercatergorypageComponent,
     OrderspecificpageComponent,
     LogoutComponent,
+    SpinnerComponent,
+    ProductComponent,
     
   ],
   imports: [

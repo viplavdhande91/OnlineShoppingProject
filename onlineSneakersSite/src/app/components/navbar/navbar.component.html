@@ -20,14 +20,31 @@
           <a
             ngbDropdownToggle
             class="nav-link dropdown-toggle"
-            href="#"
+            [routerLink]="'.'"
             role="button"
             data-bs-toggle="dropdown"
-            >Hardware</a
+            >Computer Appliances</a
           >
           <ul ngbDropdownMenu="dropdown-menu">
             <li>
-              <a ngbDropdownItem routerLink="categories">Computer Appliances</a>
+              <a ngbDropdownItem routerLink="product-categories"> Products</a>
+
+            </li>
+          </ul>
+        </li>
+
+        <li ngbDropdown>
+          <a
+            ngbDropdownToggle
+            class="nav-link dropdown-toggle"
+            [routerLink]="'.'"
+            role="button"
+            data-bs-toggle="dropdown"
+            >Orders</a
+          >
+          <ul ngbDropdownMenu="dropdown-menu">
+            <li>
+              <a ngbDropdownItem routerLink="orderdashboard">User Dashboard</a>
             </li>
           </ul>
         </li>

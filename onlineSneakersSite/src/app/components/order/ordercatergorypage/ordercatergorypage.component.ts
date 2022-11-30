@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ExternalApiCallService } from 'src/app/services/ApiCall/external-api-call.service';
 import { TokenstorageService } from 'src/app/services/token/tokenstorage.service';
 
@@ -10,37 +11,26 @@ import { TokenstorageService } from 'src/app/services/token/tokenstorage.service
 })
 export class OrdercatergorypageComponent implements OnInit {
 
-  
-  public isLoggedIn= false;
-  public isLoggedOut = true;
+  /***
+   * Data which we query from Order table
+   */
+
+  public orderData: any;
 
   constructor(
-    private tokenService: TokenstorageService,
     private http: ExternalApiCallService,
     private router: Router,
-
+    private tokenService: TokenstorageService
   ) { }
 
-  ngOnInit():void {
-    let token = this.tokenService.getToken();
-    let link = 'https://localhost:7070/Home';
-
-    let response = '';
-    this.http.getApi(link, token).subscribe((data) => {
-      response = data;
-      console.log(response);
-      console.log(typeof response);
-
-      if (response === "AccessGranted") {
-        this.isLoggedIn =true;
-        this.isLoggedOut = false;
-        this.router.navigate(['categories']);
-
-      }
-      else {
-        this.router.navigate(['login']);
-
-      }
-    });
+  ngOnInit(): void {
+  // console.log(this.tokenService.getLoggedInEmail());
+  let link = 'https://localhost:7070/api/Home/viplavdhande91@yahoo.com';
+  this.http.getApiWithoutParams(link).subscribe((data) => {
+    this.orderData = JSON.parse(data);
+    //console.log(data);
+  });
   }
+
+  
 }

@@ -6,9 +6,7 @@ import { TokenstorageService } from 'src/app/services/token/tokenstorage.service
 @Component({
   selector: 'app-logout',
   template: `
-    <p>
-      logout works!
-    </p>
+    
   `,
   styles: [
   ]
@@ -22,7 +20,10 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     let token = this.tokenService.signOut();
-    this.router.navigate(['login']);
+    // this.router.navigate(['login']);
+
+    window.location.href = 'login/';
+
 
   
   }
