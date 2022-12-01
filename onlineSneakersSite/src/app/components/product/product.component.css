@@ -1,62 +1,106 @@
 body {
-  background-color: #000;
+  background-color: #ecedee;
 }
 .card {
   border: none;
+  overflow: hidden;
 }
-.product {
-  background-color: #eee;
+.thumbnail_images ul {
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
-.brand {
-  font-size: 13px;
+.thumbnail_images ul li {
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #eee;
+  cursor: pointer;
+  transition: all 0.5s;
 }
-.act-price {
-  color: red;
-  font-weight: 700;
+.thumbnail_images ul li:hover {
+  border: 2px solid #000;
 }
-.dis-price {
-  text-decoration: line-through;
+.main_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
 }
-.about {
+.heart {
+  height: 29px;
+  width: 29px;
+  background-color: #eaeaea;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content p {
+  font-size: 12px;
+}
+.ratings span {
   font-size: 14px;
+  margin-left: 12px;
 }
-.color {
-  margin-bottom: 10px;
+.colors {
+  margin-top: 5px;
 }
-label.radio {
+.colors ul {
+  list-style: none;
+  display: flex;
+  padding-left: 0px;
+}
+.colors ul li {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  border-radius: 50%;
+  margin-right: 10px;
   cursor: pointer;
 }
-label.radio input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: hidden;
-  pointer-events: none;
+.colors ul li:nth-child(1) {
+  background-color:black;
 }
-label.radio span {
-  padding: 2px 9px;
-  border: 2px solid #ff0000;
-  display: inline-block;
-  color: #ff0000;
-  border-radius: 3px;
-  text-transform: uppercase;
+.colors ul li:nth-child(2) {
+  background-color: #96918b;
 }
-label.radio input:checked + span {
-  border-color: #ff0000;
-  background-color: #ff0000;
-  color: #fff;
+.colors ul li:nth-child(3) {
+  background-color: #68778e;
 }
-.btn-danger {
-  background-color: #ff0000 !important;
-  border-color: #ff0000 !important;
+.colors ul li:nth-child(4) {
+  background-color: #263f55;
 }
-.btn-danger:hover {
-  background-color: #da0606 !important;
-  border-color: #da0606 !important;
+
+.right-side {
+  position: relative;
 }
-.btn-danger:focus {
-  box-shadow: none;
+
+.buttons .btn {
+  height: 50px;
+  width: 150px;
+  border-radius: 0px !important;
 }
-.cart i {
-  margin-right: 10px;
+
+
+h6 {
+  color: red;
+  text-decoration: line-through;
+
+}
+
+h5{
+  color:green;
+
+}
+
+
+
+  
+section {
+  margin-top: 100px;
 }

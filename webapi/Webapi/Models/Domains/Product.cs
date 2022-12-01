@@ -15,6 +15,9 @@
 
         public string? colour { get; set; }
 
+        public string? ImageFolderName { get; set; }
+
+
         public string? category { get; set; }
 
 

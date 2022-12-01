@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ExternalApiCallService } from '../../services/ApiCall/external-api-call.service';
 import { TokenstorageService } from '../../services/token/tokenstorage.service';
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import {  faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {  faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import {  faUser } from '@fortawesome/free-solid-svg-icons';
+import {  faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+import {  faDesktop } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +19,18 @@ export class NavbarComponent implements OnInit {
 
   public isLoggedIn = false;
   public isLoggedOut = true;
+
+  /***
+   *variable used for fa-icons display
+   */
+   faShoppingBag = faShoppingBag;
+
+   faSignOutAlt = faSignOutAlt;
+   faSignInAlt = faSignInAlt;
+   faDesktop = faDesktop;
+   faShoppingCart =faShoppingCart;
+
+   faUser = faUser;
 
   constructor(private tokenService: TokenstorageService) {}
 

@@ -24,11 +24,9 @@ export class OrdercatergorypageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  // console.log(this.tokenService.getLoggedInEmail());
   let link = 'https://localhost:7070/api/Home/viplavdhande91@yahoo.com';
   this.http.getApiWithoutParams(link).subscribe((data) => {
     this.orderData = JSON.parse(data);
-    //console.log(data);
   });
   }
 

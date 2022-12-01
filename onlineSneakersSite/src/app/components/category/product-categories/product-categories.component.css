@@ -88,7 +88,7 @@ button:active {
 .off {
     position: absolute;
     left: 65%;
-    top: 6%;
+    top: 3%;
     width: 80px;
     text-align: center;
     height: 30px;
@@ -100,3 +100,24 @@ button:active {
     justify-content: center;
     color: #fff
 }
+
+
+
+a:link, a:visited {
+    color: (internal value);
+    text-decoration: none;
+    cursor: auto;
+  }
+  
+  a:link:active, a:visited:active {
+    color: (internal value);
+  }
+
+
+  
+
+  
+section {
+    margin-top: 100px;
+  }
+  

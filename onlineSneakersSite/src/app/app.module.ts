@@ -17,6 +17,7 @@ import { OrderspecificpageComponent } from './components/order/orderspecificpage
 import { LogoutComponent } from './components/logout/logout/logout.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ProductComponent } from './components/product/product.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProductComponent } from './components/product/product.component';
     LogoutComponent,
     SpinnerComponent,
     ProductComponent,
+    HomeComponent,
     
   ],
   imports: [

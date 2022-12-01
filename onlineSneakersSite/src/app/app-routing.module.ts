@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { AppComponent } from './app.component';
+import { CartpageComponent } from './components/cart/cartpage/cartpage.component';
 import { ProductCategoriesComponent } from './components/category/product-categories/product-categories.component';
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout/logout.component';
 import { OrdercatergorypageComponent } from './components/order/ordercatergorypage/ordercatergorypage.component';
@@ -10,20 +12,14 @@ import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {
-    path: 'product-categories',
-    component: ProductCategoriesComponent,
-    children: [{ path: '', redirectTo: 'product', pathMatch: 'full' }],
+    component: CartpageComponent,
+    path: 'cartpage',
   },
-
   {
     component: SignupComponent,
     path: 'signup',
   },
 
-  {
-    component: ProductComponent,
-    path: 'product-categories/product',
-  },
   {
     component: LoginComponent,
     path: 'login',
@@ -46,6 +42,13 @@ const routes: Routes = [
     component: ProductComponent,
     path: 'product',
   },
+
+  {
+    path: 'product-categories/**/cartpage',
+    component: CartpageComponent,
+  },
+  { path: '', component: HomeComponent },
+  { path: '**', component: ProductComponent },
 ];
 
 @NgModule({

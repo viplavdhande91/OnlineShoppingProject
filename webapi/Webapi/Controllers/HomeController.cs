@@ -45,13 +45,41 @@ namespace Webapi.Controllers
 
             var product = _context.Orders.Where(x => x.UserId == userid);
 
-
-
             //var customerId = userId.Select(x => x.UserId).ToList();
             //var customers = _context.Orders.Where(x => customerId.Contains(email));
             string jsonString = JsonSerializer.Serialize(product);
             return jsonString;
             
+        }
+
+
+
+        [Route("ProductsList")]
+
+        [HttpGet] // Set the attribute to Read
+        [Authorize]
+        public String ProductsList()
+        {
+
+            var productList = _context.Products;
+            string jsonString = JsonSerializer.Serialize(productList);
+            return jsonString;
+
+        }
+
+
+        [Route("/product-categories/{productId}")]
+        [Authorize]
+
+        [HttpGet] // Set the attribute to Read
+        public String Product(Guid productId)
+        {
+
+            var product = _context.Products.Where(x => x.ProductId == productId);
+
+            string jsonString = JsonSerializer.Serialize(product);
+            return jsonString;
+
         }
 
     }

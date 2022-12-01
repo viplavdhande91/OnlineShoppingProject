@@ -28,7 +28,7 @@ export class ExternalApiCallService {
     let auth_token!: string | null;
 
     auth_token = this.tokenService.getToken()
-    console.log(auth_token);
+    // console.log(auth_token);
 
 
     const headers = new HttpHeaders({

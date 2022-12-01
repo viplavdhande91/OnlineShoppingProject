@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           this.spinnerActive = false;
           this.router.navigate(['orderdashboard']);
-        }, 2000);
+        }, 1500);
       } else {
         this.router.navigate(['login']);
       }
