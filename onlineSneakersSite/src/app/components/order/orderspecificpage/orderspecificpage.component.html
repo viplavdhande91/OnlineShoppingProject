@@ -1,167 +1,90 @@
-
-
-
-
-<div class="container-fluid my-5 d-flex justify-content-center" >
-    <div class="card card-1" style="margin-top: 100px;width: 60%">
-        <div class="card-header bg-white">
-            <div class="media flex-sm-row flex-column-reverse justify-content-between " style="margin-top: -50px">
-                <div class="col my-auto" >
-                    <h4 class="mb-0"><span class="change-color">Hi, name</span> Your Order has been Succesfully Placed,!</h4>
-                </div>
-                <div class="col-auto text-center my-auto pl-0 pt-sm-4"> <img class="img-fluid my-auto align-items-center mb-0 pt-3" 
-                    src="" width="115" height="115">
-                    <h6 class="mb-4 pt-0 Glasses">Kicks</h6>
-                </div>
-            </div>
-        </div>      
-        <div class="card-body">
-
-            <div class="row justify-content-between mb-3">
-                <div class="col-auto">
-                    <h6 class="color-1 mb-0 change-color">Order Id :  </h6>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col" >
-
-                    <div class="card card-2" style="margin-bottom: 5px">
-                        <div class="card-body">
-                            <div class="media">
-                                <div class="sq align-self-center "> <img class="img-fluid my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0" 
-                                    src="" width="135" height="135" /> </div>
-                                <div class="media-body my-auto text-right">
-                                    <div class="row my-auto flex-column flex-md-row">
-                                        <div class="col my-auto" style="text-align: left;">
-                                            <small class="mb-0"><SPAN></SPAN> </small>
-                                        </div>
-                                        <div class="col-auto my-auto"> <small> </small></div>
-                                        <div class="col my-auto"> <h6>Size :     
- </h6></div>
-                                        <div class="col my-auto"> <h6>Qty :   &#8377;</h6></div>
-                                        <div class="col my-auto">
-                                            <h6 class="mb-0">Total :  &#8377;</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="my-3 ">
-
-
-
-
-        <div class="row d-flex justify-content-center">
-            <div class="col-12">
-                <ul id="progressbar" class="text-center">
-                    <li class=" step0"></li>
-                    <li class=" step0"></li>
-                    <li class=" step0"></li>
-                    <li class=" step0"></li>
-                </ul>
-            </div>
+<section >
+  <div
+    class="container-fluid my-5 d-flex justify-content-center"
+    *ngFor="let order of orderData | keyvalue"
+  >
+    <div class="card card-1" style="width: 60%">
+      <div class="card-body">
+        <div class="row justify-content-between mb-3">
+          <div class="col-auto">
+            <h6 class="color-1 mb-0 change-color">
+              Order Id : {{ order.key }}
+            </h6>
+          </div>
         </div>
+        <div
+          class="row"
+          *ngFor="let products of $any(order).value; let i = index"
+        >
+          <div class="col">
+            <div class="card card-2" style="margin-bottom: 5px">
+              <div class="card-body">
+                <div class="media">
+                  <div class="sq align-self-center">
+                    <img
+                      class="img-fluid my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0"
+                      src="{{
+                        '/assets/images/' +
+                          products[0].ImageFolderName +
+                          '/img1.png'
+                      }}"
+                      width="135"
+                      height="135"
+                    />
+                  </div>
 
-        <div class="row justify-content-between top">
-            <div class="row d-flex icon-content"> 
-
-                <div class="d-flex flex-column">
-                <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
-                 <p class="font-weight-bold">Ordered</p>
-
-                </div>
-
-            </div>
-            <div class="row d-flex icon-content"> 
-                <div class="d-flex flex-column">
-                 <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
-                   <p class="font-weight-bold">Packed</p>
-                </div>
-
-            </div>
-            <div class="row d-flex icon-content"> 
-                <div class="d-flex flex-column">
-                  <img class="icon" src="https://i.imgur.com/TkPm63y.png">
-                    <p class="font-weight-bold">Shipped</p>
-                </div>
-            </div>
-            <div class="row d-flex icon-content"> 
-                <div class="d-flex flex-column">
-                    <img class="icon" src="https://i.imgur.com/HdsziHP.png">
-                    <p class="font-weight-bold">Delivered</p>
-                </div>
-            </div>
-        </div>
-
-
-                     </div>
+                  <!-- <div class="media-body my-auto text-right">
+                  <div class="row my-auto flex-column flex-md-row">
+                    <div class="col my-auto" style="text-align: left">
+                      <small class="mb-0"><SPAN></SPAN> </small>
                     </div>
-
+                    <div class="col-auto my-auto"><small> </small></div>
+                    <div class="col my-auto"><h6>Product Name:{{ products[0].ProductName }}</h6></div>
+                    <div class="col my-auto"><h6>Qty : &#8377;</h6></div>
+                    <div class="col my-auto">
+                      <h6 class="mb-0">Total Price: {{ products[0].Price }} &#8377;</h6>
+                    </div>
+                  </div>
+                </div> -->
                 </div>
-
-            </div>
-
-             <div class="row py-5 p-4 bg-white rounded shadow-sm">
-        <div class="col-lg-6">
-          
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
-          <div class="p-4">
-            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
-            <ul class="list-unstyled mb-4">
-              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Discount</strong><strong>&#8377;</strong></li>
-               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Delivery Charges </strong><strong>FREE</strong></li>
-
-            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong><h5 class="font-weight-bold"> &#8377;</h5></li>
-             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">GST 18%</strong><h5 class="font-weight-bold"> &#8377;</h5></li>
+                <hr class="my-3" />
+              </div>
 
               
-            </ul>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="width: 18rem">
+              <div class="card-header">Product : {{ products[0].ProductName }}</div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" >Qty : {{products[0].ProductQuantity}}</li>
+                <li class="list-group-item"> Price : {{ products[0].Price }}  &#8377;</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-           
-        </div>
-        
-        
-        
-        
-        <div class="card-footer" style="background-color:  #ff6600;color: #fff;margin-bottom: -25px" >
-            <div class="jumbotron-fluid">
-                <div class="row justify-content-between ">
-                    <div class="col-sm-auto col-auto my-auto"></div>
-                    <div class="col-auto my-auto ">
-                        <h2 class="mb-0 font-weight-bold">TOTAL PAID</h2>
-                    </div>
-                    <div class="col-auto my-auto ml-auto">
-                        <h1 class="display-3 ">&#8377;  </h1>
-                    </div>
-                </div>
-               
+
+      <div
+        class="card-footer"
+        style="background-color: #ff6600; color: #fff; margin-bottom: -25px"
+         >
+        <div class="jumbotron-fluid">
+          <div class="row justify-content-between">
+            <div class="col-sm-auto col-auto my-auto"></div>
+            <div class="col-auto my-auto" *ngFor="let bInfo of BillingInfoCost ; let k = index">
+                   <div  *ngIf = "bInfo.billingId === order.key ">
+                    <h2 class="mb-0 font-weight-bold">Cash On Delivery Pay: {{bInfo.TotalCost}}
+                    </h2>
+
+                   </div>
             </div>
+            <div class="col-auto my-auto ml-auto">
+              <h1 class="display-3">&#8377; </h1>
+            </div>
+          </div>
         </div>
-        
-        
-        
+      </div>
     </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </div>
+</section>

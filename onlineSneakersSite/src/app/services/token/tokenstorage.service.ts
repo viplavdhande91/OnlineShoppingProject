@@ -5,6 +5,8 @@ import { ExternalApiCallService } from '../ApiCall/external-api-call.service';
 const TOKEN_KEY = 'auth-token';
 const LOGGED_IN_STATUS = 'logged_in_status';
 const LOGGED_IN_EMAIL = 'logged_in_email';
+const ITEMS_IN_CART = 'ITEMS_IN _CART';
+
 
 @Injectable({
   providedIn: 'root',
@@ -52,6 +54,12 @@ export class TokenstorageService {
   public getLoggedInEmail(): string {
     return sessionStorage.getItem(LOGGED_IN_EMAIL) as string;
   }
+   
+
+   
+
+
+
 
 
 }

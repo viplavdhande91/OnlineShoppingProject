@@ -39,11 +39,14 @@
             [routerLink]="'.'"
             role="button"
             data-bs-toggle="dropdown"
-            ><i><fa-icon [icon]="faShoppingBag"></fa-icon></i> Orders</a
+            *ngIf="isLoggedIn"
+            ><i><fa-icon [icon]="faShoppingBag"></fa-icon></i> Dashboard</a
           >
           <ul ngbDropdownMenu="dropdown-menu">
             <li>
-              <a ngbDropdownItem routerLink="orderdashboard">User Dashboard</a>
+              <a ngbDropdownItem routerLink="orderdashboard">Order Dashboard</a>
+              <a ngbDropdownItem routerLink="userdashboard" *ngIf="admin">User Dashboard</a>
+
             </li>
           </ul>
         </li>
@@ -57,8 +60,8 @@
         </li>
 
         <li *ngIf="isLoggedIn" class="nav-item active">
-          <a class="nav-link" routerLink="logout">
-            <fa-icon [icon]="faShoppingCart"></fa-icon> Cart</a
+          <a class="nav-link" routerLink="cartpage">
+            <fa-icon [icon]="faShoppingCart"></fa-icon> Cart({{ numberOfItemsInCart }})</a
           >
         </li>
         <li *ngIf="isLoggedIn" class="nav-item active">

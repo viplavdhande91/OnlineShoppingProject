@@ -3,17 +3,18 @@ import { Injectable, TemplateRef } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ToastrService {
+export class ToastService {
 
   constructor() { }
 
-  toasts: any[] = [];
+
+	toasts: any[] = [];
 
 	show(textOrTpl: string | TemplateRef<any>, options: any = {}) {
 		this.toasts.push({ textOrTpl, ...options });
 	}
 
-	remove(toast: any) {
+  remove(toast: any) {
 		this.toasts = this.toasts.filter((t) => t !== toast);
 	}
 

@@ -8,3 +8,16 @@
   border-left: 15px solid #a94442; /* red */
 }
 
+
+section {
+
+  margin-top:  60px;
+}
+
+
+#toast {
+  position:absolute;
+  top:0;
+  right:0;
+  color: red;
+ }

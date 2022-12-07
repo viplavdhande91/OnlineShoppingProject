@@ -1,3 +1,6 @@
+<section>
+
+  
 <div class="container-fluid">
   <div>
     <div class="text-center my-5">
@@ -10,6 +13,12 @@
     <div class="rounded d-flex justify-content-center">
       <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
         <div class="text-center">
+          <div *ngIf="loginToastrValidationFlag" >
+            <ngb-toast class="bg-danger text-light" [autohide]="true" [delay]="3000" >
+              Entered Wrong Credentials
+             </ngb-toast>
+        
+          </div>
           <h3 class="text-primary">Login</h3>
         </div>
         <div class="p-4">
@@ -67,3 +76,5 @@
     </div>
   </div>
 </div>
+
+</section>

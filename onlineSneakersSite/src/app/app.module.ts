@@ -12,12 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductCategoriesComponent } from './components/category/product-categories/product-categories.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartpageComponent } from './components/cart/cartpage/cartpage.component';
-import { OrdercatergorypageComponent } from './components/order/ordercatergorypage/ordercatergorypage.component';
 import { OrderspecificpageComponent } from './components/order/orderspecificpage/orderspecificpage.component';
 import { LogoutComponent } from './components/logout/logout/logout.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ProductComponent } from './components/product/product.component';
 import { HomeComponent } from './components/home/home.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,12 @@ import { HomeComponent } from './components/home/home.component';
     SignupComponent,
     ProductCategoriesComponent,
     CartpageComponent,
-    OrdercatergorypageComponent,
     OrderspecificpageComponent,
     LogoutComponent,
-    SpinnerComponent,
     ProductComponent,
     HomeComponent,
+    CheckoutComponent,
+    UserComponent,
     
   ],
   imports: [
@@ -42,7 +42,8 @@ import { HomeComponent } from './components/home/home.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule 
+    FontAwesomeModule ,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

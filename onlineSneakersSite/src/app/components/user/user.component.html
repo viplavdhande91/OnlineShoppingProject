@@ -1,0 +1,51 @@
+<div class="container p-3">
+  <div class="row">
+    <div class="col-8">
+      <h2 class="text-primary">Registered Customers</h2>
+    </div>
+
+    <!-- <div class="col-2 text-right">
+      <a class="btn btn-success">Add Content</a>
+    </div>
+
+    <div class="col-2 text-right">
+      <a class="btn btn-success">Logout</a>
+    </div> -->
+  </div>
+  <br />
+
+  <div class="row" *ngIf="useData && useData.length > 0">
+    <div class="col-5" *ngFor="let user of useData; let i = index">
+      <div class="card mb-3">
+        <div class="card-header">User Id : {{user.UserId}}</div>
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Username : {{user.EmailAddress}}</li>
+            <!-- <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li> -->
+          </ul>
+
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-danger" (click)="deleteUser(user.UserId)">Delete User</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <!-- <div class="card-header">No users created yet</div> -->
+    <div class="card-body">
+      <h5 class="card-title">Use the button below to create a user</h5>
+      <a
+        class="btn btn-success"
+        style="width: auto"
+       (click)="redirectToUser()"
+        routerLink="signup"
+      >
+        Add new Customer
+      </a>
+    </div>
+  </div>
+</div>

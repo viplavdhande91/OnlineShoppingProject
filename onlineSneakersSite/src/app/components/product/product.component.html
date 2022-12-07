@@ -1,87 +1,155 @@
 <section>
-
-
-    <div class="container mt-5 mb-5">
-        <div class="card">
-          <div class="row g-0">
-            <div class="col-md-6 border-end">
-              <div class="d-flex flex-column justify-content-center">
-                <div class="main_image">
-                  <img
-                    src="{{currentImage}}"
-                    id="main_product_image"
-                    width="350"
-                  />
-                </div>
-                <div class="thumbnail_images">
-                  <ul id="thumbnail">
-                    <li>
-                      <img
-                        (click)="changeImage('/assets/images/' + ProductData[0].ImageFolderName + '/img1.png')"
-                        src="{{'/assets/images/' + ProductData[0].ImageFolderName + '/img1.png'}}"
-                        width="70"
-                      />
-                    </li>
-                    <li>
-                      <img
-                        (click)="changeImage('/assets/images/' + ProductData[0].ImageFolderName + '/img2.png')"
-                        src="{{'/assets/images/' + ProductData[0].ImageFolderName + '/img2.png'}}"
-                        width="70"
-                      />
-                    </li>
-                    <li>
-                      <img
-                        (click)="changeImage('/assets/images/' + ProductData[0].ImageFolderName + '/img3.png')"
-                        src="{{'/assets/images/' + ProductData[0].ImageFolderName + '/img3.png'}}"
-                        width="70"
-                      />
-                    </li>
-                    <li>
-                      <img
-                        (click)="changeImage('/assets/images/' + ProductData[0].ImageFolderName + '/img4.png')"
-                        src="{{'/assets/images/' + ProductData[0].ImageFolderName + '/img4.png'}}"
-                        width="70"
-                      />
-                    </li>
-                  </ul>
-                </div>
-              </div>
+  <div class="container mt-5 mb-5">
+    <div class="card">
+      <div class="row g-0">
+        <div class="col-md-6 border-end">
+          <div class="d-flex flex-column justify-content-center">
+            <div class="main_image">
+              <img
+                src="{{ currentImage }}"
+                id="main_product_image"
+                width="350"
+              />
             </div>
-            <div class="col-md-6">
-              <div class="p-3 right-side">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h3>{{ProductData[0].ProductName}}</h3>
-                  <span class="heart"><i class="bx bx-heart"></i></span>
-                </div>
-                <div class="mt-2 pr-3 content">
-                  <h3>₹: {{ProductData[0].DiscountedPrice}} </h3>
-                    <h6>₹: {{ProductData[0].Price}} </h6>
-                    <h5> {{calculateStuff()}} % OFF</h5>
-                </div>
-                 
-            
-              
-                <div class="mt-5">
-                  <span class="fw-bold">Color</span>
-                  <div class="colors">
-                    <ul id="marker">
-                      <li id="marker-1"></li>
-                      <li id="marker-2"></li>
-                      <li id="marker-3"></li>
-                      <li id="marker-4"></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="buttons d-flex flex-row mt-5 gap-3">
-                  <!-- <button class="btn btn-outline-dark">Buy Now</button> -->
-                  <button class="btn btn-dark" routerLink = "cartpage">Add to Cart</button>
-                </div>
-               
+            <div class="thumbnail_images">
+              <ul id="thumbnail">
+                <li>
+                  <img
+                    (click)="
+                      changeImage(
+                        '/assets/images/' +
+                          ProductData[0].ImageFolderName +
+                          '/img1.png'
+                      )
+                    "
+                    src="{{
+                      '/assets/images/' +
+                        ProductData[0].ImageFolderName +
+                        '/img1.png'
+                    }}"
+                    width="70"
+                  />
+                </li>
+                <li>
+                  <img
+                    (click)="
+                      changeImage(
+                        '/assets/images/' +
+                          ProductData[0].ImageFolderName +
+                          '/img2.png'
+                      )
+                    "
+                    src="{{
+                      '/assets/images/' +
+                        ProductData[0].ImageFolderName +
+                        '/img2.png'
+                    }}"
+                    width="70"
+                  />
+                </li>
+                <li>
+                  <img
+                    (click)="
+                      changeImage(
+                        '/assets/images/' +
+                          ProductData[0].ImageFolderName +
+                          '/img3.png'
+                      )
+                    "
+                    src="{{
+                      '/assets/images/' +
+                        ProductData[0].ImageFolderName +
+                        '/img3.png'
+                    }}"
+                    width="70"
+                  />
+                </li>
+                <li>
+                  <img
+                    (click)="
+                      changeImage(
+                        '/assets/images/' +
+                          ProductData[0].ImageFolderName +
+                          '/img4.png'
+                      )
+                    "
+                    src="{{
+                      '/assets/images/' +
+                        ProductData[0].ImageFolderName +
+                        '/img4.png'
+                    }}"
+                    width="70"
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 right-side">
+            <div class="d-flex justify-content-between align-items-center">
+              <h3>{{ ProductData[0].ProductName }}</h3>
+              <span class="heart"><i class="bx bx-heart"></i></span>
+            </div>
+            <div class="mt-2 pr-3 content">
+              <h3>₹: {{ ProductData[0].DiscountedPrice }}</h3>
+              <h6>₹: {{ ProductData[0].Price }}</h6>
+              <h5>{{ calculateStuff() }} % OFF</h5>
+            </div>
+
+            <!-- <div class="mt-5">
+              <span class="fw-bold">Color</span>
+              <div class="colors">
+                <ul id="marker">
+                  <li id="marker-1"></li>
+                  <li id="marker-2"></li>
+                  <li id="marker-3"></li>
+                  <li id="marker-4"></li>
+                </ul>
               </div>
+            </div> -->
+            <div class="mt-5" *ngIf="add_To_Cart">
+              <span class="fw-bold">Quantity: </span>
+
+              <select [(ngModel)]="selectedOption" class="select-text">
+                <option class="dropdown-item" disabled value="undefined">
+                  Quantity:
+                </option>
+
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+
+            <div class="buttons d-flex flex-row mt-5 gap-3">
+              <!-- <button class="btn btn-outline-dark">Buy Now</button> -->
+              <button
+                class="btn btn-dark"
+                (click)="addToCart()"
+                routerLink="cartpage"
+                *ngIf="add_To_Cart"
+              >
+                Add to Cart
+              </button>
+              <!-- <div *ngIf="spinnerActive">
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border text-danger"></div>
+                </div>
+              </div> -->
+
+              <button
+                *ngIf="added_To_Cart"
+                class="btn btn-success"
+                routerLink="cartpage"
+              >
+                Added to Cart ✅
+              </button>
             </div>
           </div>
         </div>
       </div>
-      
-
+    </div>
+  </div>
 </section>

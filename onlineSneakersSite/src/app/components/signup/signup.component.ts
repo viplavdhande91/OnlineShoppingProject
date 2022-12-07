@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExternalApiCallService } from '../../services/ApiCall/external-api-call.service';
-import { ToastrService } from 'src/app/services/toastr/toastr.service';
 
 import * as uuid from 'uuid';
+import { IPasswordCheck } from 'src/app/Models/GeneralInterfaces';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,19 +12,23 @@ import * as uuid from 'uuid';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  link = 'https://localhost:7070/Auth/signup';
 
-   link = "https://localhost:7070/Auth/signup";
+  show = false;
 
-  constructor(private router: Router, private http: ExternalApiCallService) {}
+  public passwordcheck: IPasswordCheck = {
+    password: '',
+    confirmPassword: '',
+  };
+  constructor(
+    private router: Router,
+    private http: ExternalApiCallService,
+    private toastService: ToastService
+  ) { }
 
-  ngOnInit(): void {}
-
-
-
-
+  ngOnInit(): void { }
   public signupForm(item: any): void {
     console.warn(item);
-
 
     let breakCheck = false;
 
@@ -45,19 +50,25 @@ export class SignupComponent implements OnInit {
       lastName: item['lastname'],
       role: item['selectusertype'],
     };
-      
 
-    this.http.postData(this.link,data).subscribe((response) => {
-      
+    this.http.postCredentials(this.link, data).subscribe((response) => {
       if (response === '1') {
-        alert('Registration Successful');
-        window.location.href = 'login/';
+       // alert('Registration Successful');
+        //window.location.href = 'login/';
+        //        this.router.navigate(['login']);
+
+
+        setTimeout(() => {
+          this.show = true;
+          this.router.navigate(['login']);
+        }, 2000);
+
+        this.show = true;
       } else if (response === '0' && response === null) {
         alert('Registration UnSuccesful');
       }
     });
-
-   
   }
+
 
 }
