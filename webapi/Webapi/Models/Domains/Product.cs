@@ -15,6 +15,9 @@
 
         public string? colour { get; set; }
 
+        public string? Processor { get; set; }
+
+
         public string? ImageFolderName { get; set; }
 
 

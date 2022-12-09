@@ -6,11 +6,34 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Webapi.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedUserTable1 : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "BillingInfos",
+                columns: table => new
+                {
+                    billingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<int>(type: "int", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    MobileNo = table.Column<int>(type: "int", nullable: false),
+                    ProcessedStatus = table.Column<bool>(type: "bit", nullable: true),
+                    TrackingStatus = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BillingInfos", x => x.billingId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Carts",
                 columns: table => new
@@ -19,11 +42,10 @@ namespace Webapi.Migrations
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TotalPrice = table.Column<double>(type: "float", nullable: false),
                     DiscountedPrice = table.Column<double>(type: "float", nullable: false),
-                    Size = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    ProductId = table.Column<long>(type: "bigint", nullable: false),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageFolderName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateAdded = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -35,26 +57,12 @@ namespace Webapi.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LandMark = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Locality = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ZipCode = table.Column<int>(type: "int", nullable: true),
-                    PaymentMode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    GstAddedPrice = table.Column<double>(type: "float", nullable: false),
-                    DiscountedPrice = table.Column<double>(type: "float", nullable: false),
-                    Size = table.Column<int>(type: "int", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    billingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    MobileNo = table.Column<int>(type: "int", nullable: false),
-                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProcessedStatus = table.Column<bool>(type: "bit", nullable: true),
-                    TrackingStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductId = table.Column<long>(type: "bigint", nullable: false),
-                    DateAdded = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -72,6 +80,8 @@ namespace Webapi.Migrations
                     CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     brand = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     colour = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Processor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageFolderName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Availability = table.Column<bool>(type: "bit", nullable: true)
                 },
@@ -100,6 +110,9 @@ namespace Webapi.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "BillingInfos");
+
             migrationBuilder.DropTable(
                 name: "Carts");
 

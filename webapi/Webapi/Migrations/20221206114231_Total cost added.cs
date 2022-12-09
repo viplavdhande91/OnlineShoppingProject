@@ -5,24 +5,25 @@
 namespace Webapi.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedImageNamecolumntoProductTable : Migration
+    public partial class Totalcostadded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "ImageName",
-                table: "Products",
-                type: "nvarchar(max)",
-                nullable: true);
+            migrationBuilder.AddColumn<double>(
+                name: "TotalCost",
+                table: "BillingInfos",
+                type: "float",
+                nullable: false,
+                defaultValue: 0.0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "ImageName",
-                table: "Products");
+                name: "TotalCost",
+                table: "BillingInfos");
         }
     }
 }

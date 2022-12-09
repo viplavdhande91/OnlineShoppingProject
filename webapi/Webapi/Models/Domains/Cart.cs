@@ -13,15 +13,13 @@ namespace Webapi.Models.Domains
 
         public double DiscountedPrice { get; set; }
 
-        public int  Size { get; set; }
-
         public int  Quantity { get; set; }
 
         public string? ProductName { get; set; }
 
-        public double Price { get; set; }
+        public Guid ProductId { get; set; }
+        public string? ImageFolderName { get; set; }
 
-        public long ProductId { get; set; }
 
         public string? DateAdded { get; set; }
     }

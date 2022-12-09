@@ -41,7 +41,7 @@ namespace Webapi.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> LoginAsync(User? userRecieved)
+        public async Task<string> LoginAsync(User? userRecieved)
         {
             // Check if user is authenticated
             // Check username and password
@@ -52,10 +52,10 @@ namespace Webapi.Controllers
             {
                 // Generate a JWT Token
                 var token = await _tokenHandling.GenerateTokenAsync(user.EmailAddress);
-                return Ok(token);
+                return token;
             }
 
-            return BadRequest("Username or Password is incorrect.");
+            return "fail";
         }
 
     }

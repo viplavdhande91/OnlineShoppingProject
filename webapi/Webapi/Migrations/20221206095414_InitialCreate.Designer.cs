@@ -12,8 +12,8 @@ using Webapi.Data;
 namespace Webapi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221201111958_Added ImageFoldername to Product table")]
-    partial class AddedImageFoldernametoProducttable
+    [Migration("20221206095414_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,53 @@ namespace Webapi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Webapi.Models.Domains.BillingInfo", b =>
+                {
+                    b.Property<Guid>("billingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MobileNo")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<bool?>("ProcessedStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrackingStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ZipCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("billingId");
+
+                    b.ToTable("BillingInfos");
+                });
 
             modelBuilder.Entity("Webapi.Models.Domains.Cart", b =>
                 {
@@ -37,19 +84,16 @@ namespace Webapi.Migrations
                     b.Property<double>("DiscountedPrice")
                         .HasColumnType("float");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<string>("ImageFolderName")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("ProductId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.Property<double>("TotalPrice")
@@ -65,69 +109,23 @@ namespace Webapi.Migrations
 
             modelBuilder.Entity("Webapi.Models.Domains.Order", b =>
                 {
-                    b.Property<Guid>("OrderId")
+                    b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DateAdded")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("DiscountedPrice")
-                        .HasColumnType("float");
-
-                    b.Property<double>("GstAddedPrice")
-                        .HasColumnType("float");
-
-                    b.Property<string>("LandMark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Locality")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MobileNo")
                         .HasColumnType("int");
 
-                    b.Property<string>("PaymentMode")
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<bool?>("ProcessedStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Size")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TrackingStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("billingId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("ZipCode")
-                        .HasColumnType("int");
 
                     b.HasKey("OrderId");
 
@@ -154,6 +152,9 @@ namespace Webapi.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<string>("Processor")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
